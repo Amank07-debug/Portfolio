@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm view:*)",
+      "Bash(node -e \"const m=require\\(''''react-parallax-tilt''''\\); console.log\\(''''keys:'''', Object.keys\\(m\\)\\); console.log\\(''''default:'''', typeof m.default\\)\")",
+      "Bash(node -e \"const d=require\\(''''@react-three/drei''''\\); console.log\\(''''Performance'''' in d, ''''Preload'''' in d, ''''PerformanceMonitor'''' in d\\)\")",
+      "Bash(npm run:*)",
+      "Bash(npm install:*)",
+      "Bash(curl -s -o /dev/null -w \"5173 HTTP %{http_code}\\\\n\" http://localhost:5173/)",
+      "Bash(curl -s -o /dev/null -w \"5174 HTTP %{http_code}\\\\n\" http://localhost:5174/)",
+      "Bash(curl -s http://localhost:5174/)",
+      "Bash(curl -s http://localhost:5174/src/main.tsx)",
+      "Bash(curl -s http://localhost:5174/src/App.tsx)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //PID 24120 //F)",
+      "Bash(taskkill //PID 18968 //F)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5173/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5174/)",
+      "Bash(curl -s http://localhost:5173/)",
+      "Bash(curl -s -o /dev/null http://localhost:5173/)"
+    ]
+  }
+}
