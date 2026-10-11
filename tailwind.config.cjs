@@ -27,9 +27,9 @@ module.exports = {
         surface: 'hsl(var(--surface))',
       },
       fontFamily: {
-        display: ['Syne', 'system-ui', 'sans-serif'],
-        sans: ['Manrope', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+        display: ['Newsreader', 'Georgia', 'serif'],
+        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+        mono: ['DM Mono', 'ui-monospace', 'monospace'],
       },
       boxShadow: {
         glow: '0 0 40px -10px hsl(var(--primary) / 0.45)',

@@ -1,53 +1,5 @@
-import { skills } from '@/data/portfolio';
-import { Card } from '@/components/ui/Card';
-import { Reveal } from '@/components/ui/Reveal';
-import { StaggerReveal } from '@/components/ui/StaggerReveal';
-import { SectionHeading } from '@/components/ui/SectionHeading';
-
-const groups = [
-  { title: 'Languages', items: skills.languages },
-  { title: 'Frameworks / Libraries', items: skills.frameworks },
-  { title: 'Databases', items: skills.databases },
-  { title: 'Tools', items: skills.tools },
-  { title: 'Coursework', items: skills.coursework },
-] as const;
+import { skillGroups } from '@/data/portfolio';
 
 export default function Skills() {
-  return (
-    <section id="skills" className="section-pad relative">
-      <div className="container-narrow">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Skills"
-            title="Technical toolkit"
-            description="Languages, frameworks, databases, and coursework from my resume — no fluff."
-          />
-        </Reveal>
-
-        <StaggerReveal className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {groups.map((group) => (
-            <Card
-              key={group.title}
-              data-reveal-item
-              className="h-full p-5 md:p-6"
-            >
-              <h3 className="font-mono text-xs uppercase tracking-[0.18em] text-primary">
-                {group.title}
-              </h3>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {group.items.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-1.5 text-sm text-foreground/90"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </Card>
-          ))}
-        </StaggerReveal>
-      </div>
-    </section>
-  );
+  return <section className="section-pad py-16 md:py-20"><div className="container-narrow"><div className="editorial-rule grid gap-8 pt-8 lg:grid-cols-[.45fr_1fr]"><p className="eyebrow">Technical toolkit</p><div className="grid gap-x-10 gap-y-7 sm:grid-cols-2">{skillGroups.map(group => <div key={group.title} className="border-b border-border pb-5"><h3 className="font-mono text-xs uppercase tracking-[.14em] text-primary">{group.title}</h3><p className="mt-3 text-sm leading-7 text-muted-foreground">{group.items.join(' · ')}</p></div>)}</div></div></div></section>;
 }

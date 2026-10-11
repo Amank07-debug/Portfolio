@@ -1,104 +1,12 @@
-import { ExternalLink } from 'lucide-react';
-import { FaGithub } from 'react-icons/fa';
-import Tilt from 'react-parallax-tilt';
+import { ArrowUpRight } from 'lucide-react';
+import { FaGithub as Github } from 'react-icons/fa';
 import { projects } from '@/data/portfolio';
-import { Card } from '@/components/ui/Card';
-import { Reveal } from '@/components/ui/Reveal';
-import { StaggerReveal } from '@/components/ui/StaggerReveal';
-import { SectionHeading } from '@/components/ui/SectionHeading';
-import { cn } from '@/utils/cn';
+
+function ProjectVisual({ kind, title }: { kind: string; title: string }) {
+  const labels = kind === 'data-grid' ? ['ROLE ACCESS', 'MEMBERSHIP', 'NEARBY'] : kind === 'map-grid' ? ['AQI', 'HEAT', 'GREEN'] : ['SENSOR', 'MODEL', 'ALERT'];
+  return <div className="relative aspect-[16/10] overflow-hidden border border-border bg-[#e2e1d8] p-4 sm:p-6" aria-label={`${title} technical study`}><div className="absolute inset-0 opacity-80" style={{ backgroundImage: 'linear-gradient(hsl(155 18% 24% / .1) 1px, transparent 1px), linear-gradient(90deg, hsl(155 18% 24% / .1) 1px, transparent 1px)', backgroundSize: '28px 28px' }} /><div className="relative flex h-full flex-col justify-between"><div className="flex items-center justify-between font-mono text-[10px] tracking-[.16em] text-primary"><span>PROJECT STUDY</span><span>01—03</span></div><div className="grid grid-cols-3 gap-2">{labels.map((label, index) => <div key={label} className="border border-primary/30 bg-surface/85 p-2.5 sm:p-3"><span className="block font-mono text-[9px] tracking-wider text-muted-foreground">{label}</span><span className="mt-3 block h-1.5 bg-primary" style={{ width: `${45 + index * 20}%` }} /></div>)}</div><div className="max-w-[80%] border-l-2 border-accent pl-3 font-display text-xl font-medium leading-tight text-foreground sm:text-3xl">{title}</div></div></div>;
+}
 
 export default function Projects() {
-  return (
-    <section id="projects" className="section-pad relative">
-      <div className="container-narrow">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Projects"
-            title="Selected work"
-            description="Backend systems, AI platforms, and edge-to-dashboard pipelines from my resume."
-          />
-        </Reveal>
-
-        <StaggerReveal className="grid gap-6 lg:grid-cols-3" stagger={0.12}>
-          {projects.map((project) => (
-            <div key={project.id} data-reveal-item className="h-full">
-              <Tilt
-                tiltMaxAngleX={6}
-                tiltMaxAngleY={6}
-                glareEnable
-                glareMaxOpacity={0.12}
-                glareColor="#22d3ee"
-                glarePosition="all"
-                scale={1.01}
-                transitionSpeed={1200}
-                className="h-full"
-              >
-                <Card className="group flex h-full flex-col overflow-hidden p-0">
-                  <div
-                    className={cn(
-                      'relative h-28 overflow-hidden border-b border-white/10',
-                      'bg-gradient-to-br from-primary/25 via-background to-accent/20'
-                    )}
-                  >
-                    <div className="absolute inset-0 opacity-40 grid-bg" />
-                    <div className="absolute bottom-4 left-5 right-5">
-                      {project.badge ? (
-                        <span className="inline-flex rounded-md border border-primary/30 bg-background/60 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-primary backdrop-blur">
-                          {project.badge}
-                        </span>
-                      ) : null}
-                    </div>
-                  </div>
-
-                  <div className="flex flex-1 flex-col p-6">
-                    <h3 className="font-display text-2xl font-semibold tracking-tight">
-                      {project.title}
-                    </h3>
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      {project.subtitle}
-                    </p>
-
-                    <ul className="mt-5 flex-1 space-y-3">
-                      {project.points.map((point) => (
-                        <li
-                          key={point}
-                          className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground"
-                        >
-                          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                          <span>{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {project.tech.map((tech) => (
-                        <span
-                          key={tech}
-                          className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 text-xs text-foreground/85"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary transition hover:text-primary/80"
-                    >
-                      <FaGithub className="h-4 w-4" />
-                      View on GitHub
-                      <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
-                  </div>
-                </Card>
-              </Tilt>
-            </div>
-          ))}
-        </StaggerReveal>
-      </div>
-    </section>
-  );
+  return <section id="work" className="section-pad pt-12"><div className="container-narrow"><div className="mb-14 grid gap-5 md:grid-cols-[.45fr_1fr] md:items-end"><p className="eyebrow">Selected work</p><div><h2 className="font-display text-4xl font-medium leading-[.95] tracking-[-.055em] md:text-6xl">A few practical problems I have chosen to work through.</h2><p className="mt-5 max-w-2xl leading-7 text-muted-foreground">No decorative mockups here: these are technical studies because project screenshots are not yet included in this repository.</p></div></div><div className="editorial-rule">{projects.map((project, index) => <article key={project.id} className="grid gap-7 border-b border-border py-10 md:grid-cols-2 md:gap-12 md:py-16"><div className={index % 2 ? 'md:order-2' : ''}><ProjectVisual kind={project.visual} title={project.title} /></div><div className="flex flex-col justify-between"><div><div className="flex items-center justify-between border-b border-border pb-3 font-mono text-[11px] tracking-[.15em] text-muted-foreground"><span>{project.number}</span><span>{project.type}</span></div><h3 className="mt-7 font-display text-4xl font-medium tracking-[-.05em]">{project.title}</h3>{project.badge && <p className="mt-2 font-mono text-[11px] uppercase tracking-[.14em] text-accent">{project.badge}</p>}<p className="mt-6 text-lg leading-8 text-foreground/85">{project.statement}</p><p className="mt-5 border-l border-primary pl-4 text-sm leading-6 text-muted-foreground"><span className="font-medium text-foreground">My contribution. </span>{project.contribution}</p></div><div className="mt-8"><div className="flex flex-wrap gap-x-4 gap-y-2 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">{project.tech.map(tech => <span key={tech}>{tech}</span>)}</div><a href={project.github} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center gap-2 text-sm font-medium underline decoration-border underline-offset-4 transition hover:text-primary hover:decoration-primary"><Github className="h-4 w-4" /> Source profile <ArrowUpRight className="h-4 w-4" /></a></div></div></article>)}</div></div></section>;
 }

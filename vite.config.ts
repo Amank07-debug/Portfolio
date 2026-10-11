@@ -15,13 +15,5 @@ export default defineConfig({
   },
   build: {
     chunkSizeWarningLimit: 1200,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          three: ['three', '@react-three/fiber', '@react-three/drei'],
-          motion: ['framer-motion', 'gsap'],
-        },
-      },
-    },
   },
 });
