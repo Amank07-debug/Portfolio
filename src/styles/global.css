@@ -7,7 +7,8 @@
     --background: 42 33% 96%; --foreground: 150 20% 13%; --primary: 158 37% 28%; --primary-foreground: 44 38% 96%; --secondary: 38 25% 90%; --secondary-foreground: 150 20% 13%; --accent: 18 61% 42%; --accent-foreground: 42 33% 96%; --muted: 38 16% 87%; --muted-foreground: 152 9% 37%; --border: 33 15% 76%; --ring: 158 37% 28%; --surface: 42 38% 98%;
   }
   * { box-sizing: border-box; border-color: hsl(var(--border)); }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: auto; }
+  section[id] { scroll-margin-top: 5rem; }
   body { margin: 0; min-width: 320px; background: hsl(var(--background)); color: hsl(var(--foreground)); font-family: "DM Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; background-image: linear-gradient(hsl(35 22% 77% / .28) 1px, transparent 1px); background-size: 100% 7px; }
   ::selection { color: hsl(var(--primary-foreground)); background: hsl(var(--primary)); }
   :focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 4px; }
